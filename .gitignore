@@ -1,0 +1,10 @@
+﻿# Ignorer absolument tout par défaut
+*
+
+# Autoriser uniquement les 5 fichiers sélectionnés
+!.gitignore
+!app.py
+!bibliotheque.py
+!evaluate_poetry.py
+!generer.py
+!poesie_lora_evaluation_finale.ipynb
