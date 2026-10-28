@@ -19,11 +19,67 @@ Adapter un modèle de langage à la poésie, proposer trois versions du modèle 
 
 Voir [run.md](run.md) pour l'installation et toutes les commandes.
 
+### Prérequis
+
+- Python 3.11 recommandé.
+- Git et Git LFS pour récupérer les poids des adaptateurs.
+- Une connexion Internet pour installer les dépendances et télécharger le modèle de base au premier chargement.
+- GitHub CLI pour utiliser la commande de clonage ci-dessous.
+
+### Installation sous Windows
+
+Dans PowerShell :
+
+```powershell
+gh repo clone Kawter-Ael/generate-poetry-NLP
+cd generate-poetry-NLP
+git lfs install
+git lfs pull
+```
+
+Lancer ensuite l'application :
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\lancer.ps1
 ```
 
+Le lanceur utilise le Python de `.venv`, crée cet environnement s'il est absent et installe les dépendances si les principaux modules sont manquants.
+
 Ouvrir [http://localhost:8501](http://localhost:8501), puis **Générer un poème**.
+
+### Installation manuelle
+
+Depuis le dossier du projet, si l'environnement n'existe pas encore :
+
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Pour arrêter l'application, appuyer sur **Ctrl+C** dans le terminal.
+
+## Exemple d'utilisation
+
+1. Choisir V1, V2 ou V3 dans **Modèle de poésie**.
+2. Saisir un thème, par exemple `the sea at sunset`.
+3. Choisir un ton et un nombre de vers.
+4. Ajouter éventuellement une première ligne et des mots comme `moon, waves, dream`.
+5. Cliquer sur **Générer le poème**.
+6. Consulter les vérifications, puis enregistrer ou exporter le texte.
+
+Pour un premier essai sur CPU, choisir quatre vers et désactiver les tentatives supplémentaires dans les paramètres avancés.
+
+## Technologies utilisées
+
+| Technologie | Utilisation |
+| --- | --- |
+| Streamlit | Interface web interactive |
+| Transformers | Chargement du modèle Qwen et du tokenizer |
+| PyTorch | Calcul et génération sur CPU ou GPU |
+| PEFT / LoRA | Chargement et activation des adaptateurs |
+| Safetensors | Stockage des poids LoRA |
+| Git LFS | Versionnement des fichiers de poids volumineux |
 
 ## Structure du projet
 
@@ -73,3 +129,26 @@ CUDA est utilisée si disponible ; sinon, la génération fonctionne sur CPU. Le
 En local, les textes sont enregistrés dans `data/poemes_enregistres.json`. Lorsque `SPACE_ID` est défini par un hébergement, la bibliothèque est conservée dans la session Streamlit et ne persiste pas après redémarrage.
 
 Les contrôles automatiques mesurent le respect de contraintes et signalent des éléments à relire. Ils ne garantissent pas la qualité littéraire. Une version plus récente n'est pas nécessairement meilleure : la comparaison des poèmes reste humaine.
+
+## Tests
+
+Depuis le dossier du projet :
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -v
+```
+
+Les tests couvrent notamment les contraintes poétiques, les adaptateurs, les comparaisons, la sauvegarde et l'interface Streamlit. Plusieurs utilisent des modèles simulés ; un essai avec les vrais poids permet de vérifier également la génération dans votre environnement.
+
+## Documentation complémentaire
+
+- [Commandes d'exécution et dépannage](run.md)
+- [Comparaison des modèles](COMPARAISON_MODELES.md)
+- [Qualité littéraire et contrôles](QUALITE_LITTERAIRE.md)
+- [Rapport du projet](RAPPORT_PROJET_POESIE_LORA.md)
+
+## Auteur
+
+**Kawter Alouane** — compte GitHub : [Kawter-Ael](https://github.com/Kawter-Ael).
+
+Dépôt : [generate-poetry-NLP](https://github.com/Kawter-Ael/generate-poetry-NLP).
