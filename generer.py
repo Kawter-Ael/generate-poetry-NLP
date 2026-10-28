@@ -43,6 +43,10 @@ def load_model(version="v1"):
     tokenizer_path = Path(__file__).resolve().parent
     tokenizer = AutoTokenizer.from_pretrained(str(tokenizer_path))
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    if device == "cpu":
+        # Le décodage token par token souffre de la surallocation des threads.
+        # Garder des ressources pour l'interface sur les postes Windows.
+        torch.set_num_threads(min(4, torch.get_num_threads()))
     dtype = torch.float16 if device == "cuda" else torch.float32
     base = AutoModelForCausalLM.from_pretrained(BASE_MODEL, dtype=dtype)
     model = PeftModel.from_pretrained(base, info["adapter_path"], adapter_name=version, is_trainable=False)

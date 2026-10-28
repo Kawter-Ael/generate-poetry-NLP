@@ -1,0 +1,12 @@
+[
+  {"id":"love","theme":"Love and companionship","tone":"Romantique","first_line":"The moon shines upon your smile","required_words":["heart","stars","forever"]},
+  {"id":"autumn","theme":"Autumn","tone":"Mélancolique","first_line":"The leaves remember where we stood","required_words":["amber","wind","memory"]},
+  {"id":"ocean","theme":"The ocean at dawn","tone":"Paisible","first_line":"The tide unfolds beneath the dawn","required_words":["shore","salt","silence"]},
+  {"id":"hope","theme":"Hope","tone":"Inspirant","first_line":"A narrow light enters the room","required_words":["seed","courage","morning"]},
+  {"id":"childhood","theme":"Childhood","tone":"Joyeux","first_line":"The garden gate swings open again","required_words":["laughter","apple","sunlight"]},
+  {"id":"night","theme":"Night and a secret","tone":"Mystérieux","first_line":"A window glows beyond the trees","required_words":["shadow","lantern","secret"]},
+  {"id":"distance","theme":"Distance","tone":"Mélancolique","first_line":"Your letter rests beside the rain","required_words":["letter","miles","echo"]},
+  {"id":"friendship","theme":"Friendship","tone":"Joyeux","first_line":"We share the road before sunrise","required_words":["road","laughter","trust"]},
+  {"id":"city","theme":"The city at dawn","tone":"Libre","first_line":"The city lifts its shutters slowly","required_words":["stone","window","dawn"]},
+  {"id":"renewal","theme":"Renewal","tone":"Inspirant","first_line":"Green rises through the broken stone","required_words":["roots","rain","begin"]}
+]

@@ -1,0 +1,13 @@
+# Model loading and LoRA inference/training
+torch
+transformers
+peft
+accelerate
+safetensors
+
+# Dataset preparation and notebook support
+numpy
+pandas
+kagglehub
+ipython
+streamlit>=1.57

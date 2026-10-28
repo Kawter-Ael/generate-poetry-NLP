@@ -1,0 +1,18 @@
+# Identité visuelle centralisée, sans police à télécharger.
+[theme]
+base = "light"
+primaryColor = "#762F40"
+backgroundColor = "#FCFAF5"
+secondaryBackgroundColor = "#F1EAE0"
+textColor = "#302728"
+headingFont = "serif"
+font = "serif"
+borderColor = "#D8C8AD"
+baseRadius = "large"
+buttonRadius = "full"
+showWidgetBorder = true
+
+[theme.sidebar]
+font = "sans-serif"
+backgroundColor = "#F1EAE0"
+secondaryBackgroundColor = "#FCFAF5"

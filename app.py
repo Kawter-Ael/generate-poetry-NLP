@@ -238,7 +238,9 @@ def generation_view():
     st.caption("L'ATELIER")
     st.title("Générer un poème")
     st.write("Choisissez votre inspiration. Les poèmes sont composés en anglais.")
-    with st.form("creation"):
+    # Les options avancées dépendent des cases cochées : elles doivent être
+    # recalculées immédiatement, sans lancer la génération.
+    with st.container():
         st.subheader("Votre inspiration", icon=":material/edit:")
         adapter_version = st.selectbox("Modèle de poésie", list(ADAPTER_LABELS),
                                        format_func=ADAPTER_LABELS.__getitem__, key="adapter_version")
@@ -286,7 +288,7 @@ def generation_view():
                 st.caption("Paramètres contrôlés : seule la température varie ; pas de correction du prompt ni d'adaptation du budget entre profils. Aucun profil n'est présumé meilleur.")
         st.caption("Des vers courts, des images poétiques et une conclusion cohérente sont demandés au modèle. "
                    "La qualité littéraire reste à vérifier à la lecture.")
-        submitted = st.form_submit_button("Générer le poème", type="primary", icon=":material/auto_awesome:")
+        submitted = st.button("Générer le poème", type="primary", icon=":material/auto_awesome:")
     if submitted:
         try:
             words = parse_words(words_text)
